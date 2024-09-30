@@ -1,0 +1,202 @@
+[
+    {
+        "name": "Llama 3 8B Instruct",
+        "model_id": "Meta-Llama-3-8B-Instruct.Q4_0.gguf",
+        "filesize": "4661724384",
+        "ram": "8",
+        "parameters": "8 billion",
+        "type": "LLaMA3"
+    },
+    {
+        "name": "Nous Hermes 2 Mistral DPO",
+        "model_id": "Nous-Hermes-2-Mistral-7B-DPO.Q4_0.gguf",
+        "filesize": "4108928000",
+        "ram": "8",
+        "parameters": "7 billion",
+        "type": "Mistral"
+    },
+    {
+        "name": "Mistral Instruct",
+        "model_id": "mistral-7b-instruct-v0.1.Q4_0.gguf",
+        "filesize": "4108916384",
+        "ram": "8",
+        "parameters": "7 billion",
+        "type": "Mistral"
+    },
+    {
+        "name": "Llama 3.1 8B Instruct 128k",
+        "model_id": "Meta-Llama-3.1-8B-Instruct-128k-Q4_0.gguf",
+        "filesize": "4661212096",
+        "ram": "8",
+        "parameters": "8 billion",
+        "type": "LLaMA3"
+    },
+    {
+        "name": "Mistral OpenOrca",
+        "model_id": "mistral-7b-openorca.gguf2.Q4_0.gguf",
+        "filesize": "4108928128",
+        "ram": "8",
+        "parameters": "7 billion",
+        "type": "Mistral"
+    },
+    {
+        "name": "GPT4All Falcon",
+        "model_id": "gpt4all-falcon-newbpe-q4_0.gguf",
+        "filesize": "4210994112",
+        "ram": "8",
+        "parameters": "7 billion",
+        "type": "Falcon"
+    },
+    {
+        "name": "Orca 2 (Medium)",
+        "model_id": "orca-2-7b.Q4_0.gguf",
+        "filesize": "3825824192",
+        "ram": "8",
+        "parameters": "7 billion",
+        "type": "LLaMA2"
+    },
+    {
+        "name": "Orca 2 (Full)",
+        "model_id": "orca-2-13b.Q4_0.gguf",
+        "filesize": "7365856064",
+        "ram": "16",
+        "parameters": "13 billion",
+        "type": "LLaMA2"
+    },
+    {
+        "name": "Wizard v1.2",
+        "model_id": "wizardlm-13b-v1.2.Q4_0.gguf",
+        "filesize": "7365834624",
+        "ram": "16",
+        "parameters": "13 billion",
+        "type": "LLaMA2"
+    },
+    {
+        "name": "Ghost 7B v0.9.1",
+        "model_id": "ghost-7b-v0.9.1-Q4_0.gguf",
+        "filesize": "4108916960",
+        "ram": "8",
+        "parameters": "7 billion",
+        "type": "Mistral"
+    },
+    {
+        "name": "Hermes",
+        "model_id": "nous-hermes-llama2-13b.Q4_0.gguf",
+        "filesize": "7366062080",
+        "ram": "16",
+        "parameters": "13 billion",
+        "type": "LLaMA2"
+    },
+    {
+        "name": "Snoozy",
+        "model_id": "gpt4all-13b-snoozy-q4_0.gguf",
+        "filesize": "7365834624",
+        "ram": "16",
+        "parameters": "13 billion",
+        "type": "LLaMA"
+    },
+    {
+        "name": "MPT Chat",
+        "model_id": "mpt-7b-chat-newbpe-q4_0.gguf",
+        "filesize": "3912373472",
+        "ram": "8",
+        "parameters": "7 billion",
+        "type": "MPT"
+    },
+    {
+        "name": "MPT Chat",
+        "model_id": "mpt-7b-chat.gguf4.Q4_0.gguf",
+        "filesize": "3796178112",
+        "ram": "8",
+        "parameters": "7 billion",
+        "type": "MPT"
+    },
+    {
+        "name": "Phi-3 Mini Instruct",
+        "model_id": "Phi-3-mini-4k-instruct.Q4_0.gguf",
+        "filesize": "2176181568",
+        "ram": "4",
+        "parameters": "4 billion",
+        "type": "Phi-3"
+    },
+    {
+        "name": "Mini Orca (Small)",
+        "model_id": "orca-mini-3b-gguf2-q4_0.gguf",
+        "filesize": "1979946720",
+        "ram": "4",
+        "parameters": "3 billion",
+        "type": "OpenLLaMa"
+    },
+    {
+        "name": "Replit",
+        "model_id": "replit-code-v1_5-3b-newbpe-q4_0.gguf",
+        "filesize": "1953055104",
+        "ram": "4",
+        "parameters": "3 billion",
+        "type": "Replit"
+    },
+    {
+        "name": "Starcoder",
+        "model_id": "starcoder-newbpe-q4_0.gguf",
+        "filesize": "8987411904",
+        "ram": "4",
+        "parameters": "7 billion",
+        "type": "Starcoder"
+    },
+    {
+        "name": "Rift coder",
+        "model_id": "rift-coder-v0-7b-q4_0.gguf",
+        "filesize": "3825903776",
+        "ram": "8",
+        "parameters": "7 billion",
+        "type": "LLaMA"
+    },
+    {
+        "name": "SBert",
+        "model_id": "all-MiniLM-L6-v2-f16.gguf",
+        "filesize": "45887744",
+        "ram": "1",
+        "parameters": "40 million",
+        "type": "Bert"
+    },
+    {
+        "name": "SBert",
+        "model_id": "all-MiniLM-L6-v2.gguf2.f16.gguf",
+        "filesize": "45949216",
+        "ram": "1",
+        "parameters": "40 million",
+        "type": "Bert"
+    },
+    {
+        "name": "EM German Mistral",
+        "model_id": "em_german_mistral_v01.Q4_0.gguf",
+        "filesize": "4108916352",
+        "ram": "8",
+        "parameters": "7 billion",
+        "type": "Mistral"
+    },
+    {
+        "name": "Nomic Embed Text v1",
+        "model_id": "nomic-embed-text-v1.f16.gguf",
+        "filesize": "274290560",
+        "ram": "1",
+        "parameters": "137 million",
+        "type": "Bert"
+    },
+    {
+        "name": "Nomic Embed Text v1.5",
+        "model_id": "nomic-embed-text-v1.5.f16.gguf",
+        "filesize": "274290560",
+        "ram": "1",
+        "parameters": "137 million",
+        "type": "Bert"
+    },
+    {
+        "name": "Qwen2-1.5B-Instruct",
+        "model_id": "qwen2-1_5b-instruct-q4_0.gguf",
+        "filesize": "937532800",
+        "ram": "4",
+        "parameters": "1.5 billion",
+        "type": "qwen2"
+    }
+]
