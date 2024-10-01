@@ -1,0 +1,13 @@
+langchain
+langchain-community
+langchain-openai
+langchain-experimental
+python-dotenv
+redis
+gpt4all
+python-semantic-release
+pylint
+pre-commit
+mkdocs
+mkdocstrings[python]
+mkdocs-material

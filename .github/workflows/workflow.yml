@@ -1,0 +1,104 @@
+name: Upload Python Package
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  id-token: write
+  actions: write
+  packages: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout master branch
+      uses: actions/checkout@v4
+      with:
+        ref: main
+        fetch-depth: 0
+
+    - name: Create and push to master
+      run: |
+        git checkout -b master
+        git push origin master
+
+    - name: Checkout release branch
+      run: git checkout master
+
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install build twine python-semantic-release setuptools-scm
+
+    - name: Run semantic-release and determine version
+      id: semantic_version
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+        # Run semantic-release to determine the version
+        semantic-release version
+        # Extract the version from the latest tag
+        VERSION=$(git describe --tags --abbrev=0)
+        echo "VERSION=$VERSION" >> $GITHUB_ENV
+
+    - name: 'Copy Docusaurus build artifacts to gh-pages branch'
+      run: |
+        # Create a temp directory to store the build files
+        mkdir -p /tmp/temp-directory
+        # Enable dotglob to copy hidden files (like .gitignore)
+        shopt -s dotglob
+        # Copy the build from the docs-docusaurus/build folder
+        cp -r site/* /tmp/temp-directory/
+        shopt -u dotglob
+        # Switch to the gh-pages branch
+        git checkout gh-pages
+        # Remove all files from the gh-pages branch
+        rm -rf *
+        # Copy the page data from the temp directory
+        cp -r /tmp/temp-directory/* .
+        # Check if there are any changes before committing
+        if [[ -n "$(git status --porcelain)" ]]; then
+          git add . -f
+          git commit -m "chore: Copy MKDocs build page data to gh-pages branch"
+        else
+          echo "No changes to commit"
+        fi
+
+    - name: Build package
+      run: python -m build
+
+    - name: Publish package to PyPI
+      env:
+        TWINE_USERNAME: _token_
+        TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+      run: twine upload dist/*
+
+    - name: Raise PR from master to main
+      uses: peter-evans/create-pull-request@v5
+      with:
+        base: main
+        head: master
+        title: 'Release PR: master -> main'
+        body: 'This PR merges the changes from the master branch back into main after the release.'
+        branch: pr-master-to-main
+
+    - name: Push to gh-pages
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        git push origin gh-pages || echo "No changes to push"
+
+    - name: 'Switch back to docs branch'
+      run: |
+        git checkout main
