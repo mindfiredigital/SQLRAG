@@ -21,6 +21,7 @@ jobs:
       with:
         ref: main
         fetch-depth: 0
+        tags: true
 
     - name: Create and push to master
       run: |
@@ -50,7 +51,7 @@ jobs:
         # Run semantic-release to determine the version
         semantic-release version
         # Extract the version from the latest tag
-        VERSION=$(git describe --tags --abbrev=0)
+        VERSION=$(git describe --tags --abbrev=0 || git describe --always)
         echo "VERSION=$VERSION" >> $GITHUB_ENV
 
     - name: 'Copy Docusaurus build artifacts to gh-pages branch'
