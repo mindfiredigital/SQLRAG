@@ -106,7 +106,15 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        git push origin gh-pages || echo "No changes to push"
+        # Checkout gh-pages branch
+        git fetch origin gh-pages
+        git checkout gh-pages
+
+        # Pull latest changes from the remote gh-pages branch
+        git pull origin gh-pages --rebase
+
+        # Push changes to gh-pages, forcing if necessary
+        git push --force origin gh-pages || echo "No changes to push"
 
     - name: 'Switch back to main branch'
       run: |
