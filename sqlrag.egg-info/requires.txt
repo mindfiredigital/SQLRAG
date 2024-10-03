@@ -1,0 +1,6 @@
+langchain
+langchain_experimental
+langchain_openai
+langchain_community
+redis
+gpt4all
