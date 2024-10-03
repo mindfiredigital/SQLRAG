@@ -87,6 +87,7 @@ jobs:
 
     - name: Check for setup.py and current directory
       run: |
+        cd ..
         pwd  # Print the current working directory
         ls -l  # List files in the current directory
         if [ ! -f setup.py ]; then
