@@ -95,17 +95,6 @@ jobs:
       run: |
         git checkout main
 
-
-    # - name: Check for setup.py and current directory
-    #   run: |
-    #     cd ..
-    #     pwd  # Print the current working directory
-    #     ls -l  # List files in the current directory
-    #     if [ ! -f setup.py ]; then
-    #       echo "setup.py not found! Aborting..."
-    #       exit 1
-    #     fi
-
     - name: Build package
       run: python -m build
 
@@ -115,15 +104,15 @@ jobs:
         TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
       run: twine upload dist/*
 
-    - name: Raise PR from master to main
-      uses: peter-evans/create-pull-request@v5
-      with:
-        base: main
-        head: master
-        title: 'Release PR: master -> main'
-        body: 'This PR merges the changes from the master branch back into main after the release.'
-        branch: pr-master-to-main
+    # - name: Raise PR from master to main
+    #   uses: peter-evans/create-pull-request@v5
+    #   with:
+    #     base: main
+    #     head: master
+    #     title: 'Release PR: master -> main'
+    #     body: 'This PR merges the changes from the master branch back into main after the release.'
+    #     branch: pr-master-to-main
 
-    - name: 'Switch back to docs branch'
-      run: |
-        git checkout main
+    # - name: 'Switch back to docs branch'
+    #   run: |
+    #     git checkout main
