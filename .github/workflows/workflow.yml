@@ -62,6 +62,15 @@ jobs:
         # Push tags to the repository
         git push --follow-tags origin master || git push --set-upstream origin master
 
+    - name: Build package
+      run: python -m build
+
+    - name: Publish package to PyPI
+      env:
+        TWINE_USERNAME: _token_
+        TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+      run: twine upload dist/*
+
     - name: 'Copy Docusaurus build artifacts to gh-pages branch'
       run: |
         # Create a temp directory to store the build files
@@ -99,18 +108,9 @@ jobs:
       run: |
         git push origin gh-pages || echo "No changes to push"
 
-    - name: 'Switch back to docs branch'
+    - name: 'Switch back to main branch'
       run: |
         git checkout main
-
-    - name: Build package
-      run: python -m build
-
-    - name: Publish package to PyPI
-      env:
-        TWINE_USERNAME: _token_
-        TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
-      run: twine upload dist/*
 
     # - name: Raise PR from master to main
     #   uses: peter-evans/create-pull-request@v5
