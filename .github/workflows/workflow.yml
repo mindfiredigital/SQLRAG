@@ -85,10 +85,17 @@ jobs:
           echo "No changes to commit"
         fi
 
-    - name: Build package
+    - name: Check for setup.py and current directory
       run: |
-        cd /home/runner/work/SQLRAG  # Navigate to the correct directory
-        python -m build
+        pwd  # Print the current working directory
+        ls -l  # List files in the current directory
+        if [ ! -f setup.py ]; then
+          echo "setup.py not found! Aborting..."
+          exit 1
+        fi
+
+    - name: Build package
+      run: python -m build
 
     - name: Publish package to PyPI
       env:
