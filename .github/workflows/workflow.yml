@@ -85,15 +85,26 @@ jobs:
           echo "No changes to commit"
         fi
 
-    - name: Check for setup.py and current directory
+    - name: Push to gh-pages
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        cd ..
-        pwd  # Print the current working directory
-        ls -l  # List files in the current directory
-        if [ ! -f setup.py ]; then
-          echo "setup.py not found! Aborting..."
-          exit 1
-        fi
+        git push origin gh-pages || echo "No changes to push"
+
+    - name: 'Switch back to docs branch'
+      run: |
+        git checkout main
+
+
+    # - name: Check for setup.py and current directory
+    #   run: |
+    #     cd ..
+    #     pwd  # Print the current working directory
+    #     ls -l  # List files in the current directory
+    #     if [ ! -f setup.py ]; then
+    #       echo "setup.py not found! Aborting..."
+    #       exit 1
+    #     fi
 
     - name: Build package
       run: python -m build
@@ -112,12 +123,6 @@ jobs:
         title: 'Release PR: master -> main'
         body: 'This PR merges the changes from the master branch back into main after the release.'
         branch: pr-master-to-main
-
-    - name: Push to gh-pages
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        git push origin gh-pages || echo "No changes to push"
 
     - name: 'Switch back to docs branch'
       run: |
