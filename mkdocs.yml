@@ -1,0 +1,11 @@
+site_name: SQLRAG
+
+theme:
+  name: "material"
+
+plugins:
+  - mkdocstrings
+
+nav:
+  - Home: index.md
+  - About: about.md
