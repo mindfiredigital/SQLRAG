@@ -86,7 +86,9 @@ jobs:
         fi
 
     - name: Build package
-      run: python -m build
+      run: |
+        cd /home/runner/work/SQLRAG  # Navigate to the correct directory
+        python -m build
 
     - name: Publish package to PyPI
       env:
