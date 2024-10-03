@@ -69,14 +69,14 @@ CHART_PROMPT_TEMPLATE = """
                 TASK:
                 After retrieving the data, generate code based on the {chart_type}.
 
-                If the chart_type is 'matplotlib' or 'seaborn', generate Python code for matplotlib or seaborn libraries.
+                If the chart_type is 'matplotlib' generate Python code for matplotlib libraries.
                 If the chart_type is 'chart.js', generate JavaScript code for chart.js.
                 Always stick to generate the code based on provided chart_type.
 
                 The generated code must use the retrieved data and should be structured properly to create the appropriate chart.
 
 
-                **For Python-based plotting (matplotlib/seaborn)**:
+                **For Python-based plotting (matplotlib)**:
 
                 Example:
 
@@ -132,6 +132,7 @@ CHART_PROMPT_TEMPLATE = """
                 }});
 
                 Do not return any string data; only return the code required to generate the chart or plot.
+                Always reponse the code format based on chart type: {chart_type}
 
                 AI RESPONSE:
         """
