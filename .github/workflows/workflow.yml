@@ -63,8 +63,16 @@ jobs:
         # Copy the build from the docs-docusaurus/build folder
         cp -r site/* /tmp/temp-directory/
         shopt -u dotglob
-        # Switch to the gh-pages branch
-        git checkout gh-pages
+
+        # Check if the gh-pages branch exists and create it if it doesn't
+        if git show-ref --quiet refs/heads/gh-pages; then
+          echo "gh-pages branch exists. Checking it out."
+          git checkout gh-pages
+        else
+          echo "gh-pages branch does not exist. Creating it."
+          git checkout --orphan gh-pages
+          git rm -rf .
+        fi
         # Remove all files from the gh-pages branch
         rm -rf *
         # Copy the page data from the temp directory
