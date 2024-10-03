@@ -60,7 +60,7 @@ jobs:
         echo "VERSION=$VERSION" >> $GITHUB_ENV
 
         # Push tags to the repository
-        git push --follow-tags origin
+        git push --follow-tags origin master || git push --set-upstream origin master
 
     - name: 'Copy Docusaurus build artifacts to gh-pages branch'
       run: |
